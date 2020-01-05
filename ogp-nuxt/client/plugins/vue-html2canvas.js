@@ -1,4 +1,4 @@
-import Vue from 'vue';
-import VueHtml2Canvas from 'vue-html2canvas';
+import Vue from 'vue'
+import VueHtml2Canvas from 'vue-html2canvas'
 
-Vue.use(VueHtml2Canvas);
+Vue.use(VueHtml2Canvas)
