@@ -60,7 +60,8 @@ export default {
 #message-ogp {
   width: 640px;
   min-height: 335px;
-  font-size: 3em;
+  /* font-size: 3em; */
+  font-size: calc(100vw / 20);
   padding: 0.7em 1em;
   line-height: 1.1;
   white-space: pre-line; /* 改行記号の反映 */
@@ -70,6 +71,13 @@ export default {
   display: flex;
   -webkit-align-items: center;
   align-items: center;
+}
+
+@media (max-width: 700px) {
+  #message-ogp {
+    width: 80vw;
+    min-height: 50vw;
+  }
 }
 
 textarea {
