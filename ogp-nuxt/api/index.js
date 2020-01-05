@@ -1,30 +1,40 @@
-require('dotenv').config();
+require('dotenv').config()
 
-const express = require("express");
-const app = express();
-const bodyParser = require('body-parser');
+const express = require('express')
+const app = express()
+const bodyParser = require('body-parser')
 var cloudinary = require('cloudinary').v2
-const uuid = require('uuid');
+const uuid = require('uuid')
 
-const { cloud_name, api_key, api_secret } = process.env;
+const { cloud_name, api_key, api_secret } = process.env
 
-app.use(bodyParser());
+app.use(express.urlencoded({ extended: true, limit: '10mb' }))
+app.use(express.json({ extended: true, limit: '10mb' }))
 
-app.get("/", function (req, res) {
-  res.send("HelloWorld");
-});
+app.use(bodyParser())
 
-app.post("/canvas", function (req, res) {
-  const base64 = req.body.base64;
+app.get('/', function(req, res) {
+  res.send('HelloWorld')
+})
+
+app.post('/canvas', function(req, res) {
+  console.log('canvas')
+  res.send('OK')
+
+  const base64 = req.body.base64
 
   const public_id = `ogp/${uuid.v4()}`
 
-  cloudinary.uploader.upload(base64,
-    { cloud_name, api_key, api_secret, public_id },
-    function (error, result) { console.log(result, error) });
+  // cloudinary.uploader.upload(
+  //   base64,
+  //   { cloud_name, api_key, api_secret, public_id },
+  //   function(error, result) {
+  //     console.log(result, error)
+  //   }
+  // )
 
-  res.send("OK");
-});
+  res.send('OK')
+})
 
 // app.get("/canvas", function (req, res) {
 //   console.log('canvas fire');
@@ -36,6 +46,6 @@ app.post("/canvas", function (req, res) {
 // })
 
 module.exports = {
-  path: "/api/",
+  path: '/api/',
   handler: app
-};
+}

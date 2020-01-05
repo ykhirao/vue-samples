@@ -1,8 +1,8 @@
 <template>
   <section class="container">
-    <article class="box17" id="message-ogp" ref="printMe">{{ogp.text}}</article>
+    <div id="message-ogp" ref="printMe" v-text="text"></div>
     <div>
-      <textarea class="textarea-text" type="text" v-model="ogp.text" placeholder="本文" />
+      <textarea type="text" v-model="text" placeholder="本文" />
       <button @click="print">print</button>
       <button @click="submit">submit</button>
     </div>
@@ -16,22 +16,23 @@
 export default {
   data() {
     return {
-      src: null,
-      ogp: {
-        text: `ここに文字の入力をお願いします！
-        改行も絵文字も可能！！！😂`
-      }
+      src: '',
+      text: 'ここに文字の入力をお願いします！\n改行も絵文字も可能！！！😂'
     }
   },
   methods: {
     async submit() {
       if (!this.src) {
-        console.log('dataがない')
         return
       }
-      const response = await this.$axios.$post('/api/canvas', {
-        base64: this.src
-      })
+      try {
+        const response = await this.$axios.$post('/api/canvas', {
+          base64: this.src
+          // image: this.src.replace(/^.*,/, '')
+        })
+      } catch (e) {
+        console.log(e.message)
+      }
     },
     async print() {
       const el = this.$refs.printMe
@@ -41,6 +42,12 @@ export default {
       }
       this.src = await this.$html2canvas(el, options)
       console.log(this.src)
+      console.log(
+        '%c+',
+        'font-size: 0px; padding: 8px; color: transparent; background: url(' +
+          this.src +
+          ');'
+      )
     }
   }
 }
@@ -64,22 +71,15 @@ export default {
   padding: 0.7em 1em;
   line-height: 1.1;
   white-space: pre-line; /* 改行記号の反映 */
-}
-.message-body {
-  min-height: 335px;
-}
-.box17 {
-  padding: 0.5em 1em;
-  margin: 2em 0;
   font-weight: bold;
   border: solid 3px #111;
-}
-.box17 div {
-  margin: 0;
-  padding: 0;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
 }
 
-.textarea-text {
+textarea {
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
@@ -95,7 +95,7 @@ export default {
   width: 100%;
 }
 
-.textarea-text:focus {
+textarea:focus {
   border: 1px solid rgba(0, 0, 0, 0.32);
   box-shadow: none;
   outline: none;
