@@ -1,19 +1,12 @@
 <template>
   <section class="container">
-    <article class="message" id="message-ogp" ref="printMe">
-      <div class="message-header">
-        <p>{{ogp.title}}</p>
-      </div>
-      <div class="message-body" v-bind:style="ogpStyle" contenteditable="true">{{ogp.text}}</div>
-    </article>
+    <article class="box17" id="message-ogp" ref="printMe">{{ogp.text}}</article>
     <div>
-      <input type="text" v-model="ogp.title" placeholder="タイトル" />
-      <input type="text" v-model="ogp.text" placeholder="本文" />
-      <input type="number" v-model="ogp.size" />
+      <textarea class="textarea-text" type="text" v-model="ogp.text" placeholder="本文" />
       <button @click="print">print</button>
       <button @click="submit">submit</button>
     </div>
-    <div>
+    <div style="width:60%;">
       <img :src="src" />
     </div>
   </section>
@@ -25,16 +18,9 @@ export default {
     return {
       src: null,
       ogp: {
-        title: 'タイトル',
-        text: 'あああああああああ',
-        size: '4'
+        text: `ここに文字の入力をお願いします！
+        改行も絵文字も可能！！！😂`
       }
-    }
-  },
-  computed: {
-    ogpStyle: function() {
-      const fontSize = `${this.ogp.size}em`
-      return { fontSize }
     }
   },
   methods: {
@@ -54,6 +40,7 @@ export default {
         logging: false
       }
       this.src = await this.$html2canvas(el, options)
+      console.log(this.src)
     }
   }
 }
@@ -70,18 +57,47 @@ export default {
   text-align: center;
 }
 
-.links {
-  padding-top: 15px;
-}
-
 #message-ogp {
-  max-width: 640px;
-  max-height: 335px;
-  overflow: hidden;
-  /* white-space: nowrap; */
-  text-overflow: ellipsis;
+  width: 640px;
+  min-height: 335px;
+  font-size: 3em;
+  padding: 0.7em 1em;
+  line-height: 1.1;
+  white-space: pre-line; /* 改行記号の反映 */
 }
 .message-body {
-  padding: 0.2em;
+  min-height: 335px;
+}
+.box17 {
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  font-weight: bold;
+  border: solid 3px #111;
+}
+.box17 div {
+  margin: 0;
+  padding: 0;
+}
+
+.textarea-text {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  background-image: none;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  border-radius: 0;
+  color: inherit;
+  font-family: inherit;
+  font-size: 1em;
+  height: 100px;
+  padding: 0.4em 0.8em;
+  width: 100%;
+}
+
+.textarea-text:focus {
+  border: 1px solid rgba(0, 0, 0, 0.32);
+  box-shadow: none;
+  outline: none;
 }
 </style>
