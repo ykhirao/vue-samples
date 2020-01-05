@@ -25,10 +25,10 @@ export default {
       if (!this.src) {
         return
       }
+
       try {
-        const response = await this.$axios.$post('/api/canvas', {
-          base64: this.src
-          // image: this.src.replace(/^.*,/, '')
+        const response = await this.$axios.$post('/api/images', {
+          img: this.src
         })
       } catch (e) {
         console.log(e.message)
@@ -41,13 +41,6 @@ export default {
         logging: false
       }
       this.src = await this.$html2canvas(el, options)
-      console.log(this.src)
-      console.log(
-        '%c+',
-        'font-size: 0px; padding: 8px; color: transparent; background: url(' +
-          this.src +
-          ');'
-      )
     }
   }
 }
