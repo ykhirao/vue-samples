@@ -1,4 +1,5 @@
 const pkg = require('./package')
+const dotenv = require('dotenv').config().parsed
 
 module.exports = {
   mode: 'universal',
@@ -54,6 +55,17 @@ module.exports = {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
+    extend(config, ctx) {
+      config.node = {
+        fs: 'empty'
+      }
+    }
+  },
+
+  /**
+   * env
+   */
+  env: {
+    ...dotenv
   }
 }
