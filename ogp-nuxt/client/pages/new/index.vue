@@ -36,11 +36,8 @@ export default {
     },
     async print() {
       const el = this.$refs.printMe
-      const options = {
-        type: 'dataURL',
-        logging: false
-      }
-      this.src = await this.$html2canvas(el, options)
+      const canvas = await this.$html2canvas(el, { logging: false })
+      this.src = canvas.toDataURL('image/jpeg', 0.85)
     }
   }
 }

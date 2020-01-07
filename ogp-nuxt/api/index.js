@@ -20,12 +20,12 @@ app.get('/', function(req, res) {
 })
 
 app.post('/images', (req, res) => {
-  var base64Data = req.body.img.replace(/^data:image\/png;base64,/, '')
-  const filename = `images/${Math.random()
-    .toString(32)
-    .substring(2)}.png`
-
   try {
+    var base64Data = req.body.img.replace(/^data:image\/jpeg;base64,/, '')
+    const filename = `images/${Math.random()
+      .toString(32)
+      .substring(2)}.jpg`
+
     fs.writeFileSync(filename, base64Data, 'base64', function(err) {
       if (err) {
         console.log('エラーが発生しました。' + err)
