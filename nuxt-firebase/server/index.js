@@ -1,3 +1,8 @@
+console.log('This is outdated!!!!')
+return
+
+/*
+
 const express = require('express')
 const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
@@ -32,3 +37,5 @@ async function start() {
   })
 }
 start()
+
+*/
