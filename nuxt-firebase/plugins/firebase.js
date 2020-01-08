@@ -25,7 +25,7 @@ if (!firebase.apps.length && process) {
   }
 
   firebase.initializeApp(firebaseConfig)
-  firebase.analytics()
+  if (firebase.analytics) firebase.analytics()
 }
 
 export default firebase
