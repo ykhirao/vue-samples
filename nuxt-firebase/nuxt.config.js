@@ -1,5 +1,7 @@
 const pkg = require('./package')
 const dotenv = require('dotenv').config().parsed
+import bodyParser from 'body-parser'
+import session from 'express-session'
 
 module.exports = {
   mode: 'universal',
@@ -61,6 +63,21 @@ module.exports = {
       }
     }
   },
+
+  serverMiddleware: [
+    // body-parser middleware
+    bodyParser.json(),
+    // session middleware
+    session({
+      secret: 'super-secret-key',
+      resave: false,
+      saveUninitialized: false,
+      cookie: { maxAge: 60000 }
+    }),
+    // Api middleware
+    // We add /api/login & /api/logout routes
+    '~/api'
+  ],
 
   /**
    * env
