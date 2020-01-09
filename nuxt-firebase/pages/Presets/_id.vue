@@ -1,5 +1,5 @@
 <template>
-  <div>auth</div>
+  <div>{{ this.$route.params.id }}</div>
 </template>
 <script>
 import firebase from '~/plugins/firebase'

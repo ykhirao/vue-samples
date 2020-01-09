@@ -1,5 +1,5 @@
 <template>
-  <div>auth</div>
+  <div>new presets</div>
 </template>
 <script>
 import firebase from '~/plugins/firebase'
