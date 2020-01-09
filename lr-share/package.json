@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "host": "firebase serve --only hosting"
+    "host": "firebase serve --only hosting",
+    "func": "cd functions && npm run serve"
   },
   "dependencies": {
     "core-js": "^3.4.4",
