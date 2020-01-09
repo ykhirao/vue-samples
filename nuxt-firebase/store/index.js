@@ -1,24 +1,16 @@
 import axios from 'axios'
 
 export const state = () => ({
-  authUser: null,
-  user: null // old
+  authUser: null
 })
 
 export const mutations = {
   SET_USER(state, user) {
     state.authUser = user
-  },
-  setUser(state, payload) {
-    state.user = payload
-  } // old
+  }
 }
 
 export const actions = {
-  setUser({ commit }, payload) {
-    commit('setUser', payload)
-  }, // OLD
-
   // nuxtServerInit is called by Nuxt.js before server-rendering every page
   nuxtServerInit({ commit }, { req }) {
     if (req.session && req.session.authUser) {
@@ -31,7 +23,7 @@ export const actions = {
       commit('SET_USER', data)
     } catch (error) {
       if (error.response && error.response.status === 401) {
-        throw new Error('Bad credentials')
+        throw new Error('無効な認証情報です')
       }
       throw error
     }

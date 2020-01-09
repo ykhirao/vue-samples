@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    <h1>Please login to see the secret content</h1>
     <form v-if="!$store.state.authUser" @submit.prevent="login">
       <p v-if="formError" class="error">{{ formError }}</p>
       <p>
@@ -70,9 +69,6 @@ export default {
 </script>
 
 <style>
-.container {
-  padding: 100px;
-}
 .error {
   color: red;
 }
