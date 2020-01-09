@@ -9,28 +9,11 @@
           />
         </b-navbar-item>
       </template>
-      <template slot="start">
-        <b-navbar-item href="#">
-          Home
-        </b-navbar-item>
-        <b-navbar-item href="#">
-          Documentation
-        </b-navbar-item>
-        <b-navbar-dropdown label="Info">
-          <b-navbar-item href="#">
-            About
-          </b-navbar-item>
-          <b-navbar-item href="#">
-            Contact
-          </b-navbar-item>
-        </b-navbar-dropdown>
-      </template>
-
       <template slot="end">
         <b-navbar-item tag="div">
           <div class="buttons">
-            <NuxtLink to="/signup" class="button is-info">登録</NuxtLink>
-            <NuxtLink to="/login" class="button is-light">ログイン</NuxtLink>
+            <nuxt-link to="/signup" class="button is-info">登録</nuxt-link>
+            <nuxt-link to="/login" class="button is-light">ログイン</nuxt-link>
           </div>
         </b-navbar-item>
       </template>
@@ -66,7 +49,6 @@ export default {
 </script>
 <style lang="stylus" scoped>
 .navbar-item
-  max-height 52px
   img
-    max-height 36px
+    max-height: 37px
 </style>
