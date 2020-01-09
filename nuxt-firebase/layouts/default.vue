@@ -1,36 +1,43 @@
 <template>
   <div>
-    <nav
-      class="navbar header has-shadow is-primary"
-      role="navigation"
-      aria-label="main navigation"
-    >
-      <div class="navbar-brand">
-        <a class="navbar-item" href="/">
-          <img src="~assets/logo.png" alt="Buefy" height="28" />
-        </a>
+    <b-navbar>
+      <template slot="brand">
+        <b-navbar-item tag="router-link" :to="{ path: '/' }">
+          <img
+            src="~assets/LS-logo2.png"
+            alt="Lightweight UI components for Vue.js based on Bulma"
+          />
+        </b-navbar-item>
+      </template>
+      <template slot="start">
+        <b-navbar-item href="#">
+          Home
+        </b-navbar-item>
+        <b-navbar-item href="#">
+          Documentation
+        </b-navbar-item>
+        <b-navbar-dropdown label="Info">
+          <b-navbar-item href="#">
+            About
+          </b-navbar-item>
+          <b-navbar-item href="#">
+            Contact
+          </b-navbar-item>
+        </b-navbar-dropdown>
+      </template>
 
-        <div class="navbar-burger">
-          <span />
-          <span />
-          <span />
-        </div>
-      </div>
-    </nav>
+      <template slot="end">
+        <b-navbar-item tag="div">
+          <div class="buttons">
+            <NuxtLink to="/signup" class="button is-info">登録</NuxtLink>
+            <NuxtLink to="/login" class="button is-light">ログイン</NuxtLink>
+          </div>
+        </b-navbar-item>
+      </template>
+    </b-navbar>
 
     <section class="main-content columns">
-      <aside class="column is-2 section">
-        <p class="menu-label is-hidden-touch">General</p>
-        <ul class="menu-list">
-          <li v-for="(item, key) of items" :key="key">
-            <nuxt-link :to="item.to" exact-active-class="is-active">
-              <b-icon :icon="item.icon" /> {{ item.title }}
-            </nuxt-link>
-          </li>
-        </ul>
-      </aside>
-
-      <div class="container column is-10">
+      <div class="container column is-12">
         <nuxt />
       </div>
     </section>
@@ -57,3 +64,9 @@ export default {
   }
 }
 </script>
+<style lang="stylus" scoped>
+.navbar-item
+  max-height 52px
+  img
+    max-height 36px
+</style>
