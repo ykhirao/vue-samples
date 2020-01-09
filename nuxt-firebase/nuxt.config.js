@@ -41,13 +41,26 @@ module.exports = {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     // Doc: https://buefy.github.io/#/documentation
-    'nuxt-buefy'
+    'nuxt-buefy',
+    '@nuxtjs/markdownit'
   ],
   /*
    ** Axios module configuration
    */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+  },
+
+  markdownit: {
+    preset: 'default',
+    injected: true,
+    breaks: true,
+    html: true,
+    linkify: true,
+    typography: true,
+    use: [
+      // 'markdown-it-div', 'markdown-it-attrs'
+    ]
   },
 
   /*
