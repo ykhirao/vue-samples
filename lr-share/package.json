@@ -4,10 +4,13 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "host": "firebase serve --only hosting"
   },
   "dependencies": {
     "core-js": "^3.4.4",
+    "dotenv": "^8.2.0",
+    "prettier": "^1.19.1",
     "vue": "^2.6.10",
     "vue-class-component": "^7.0.2",
     "vue-property-decorator": "^8.3.0",
