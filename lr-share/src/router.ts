@@ -11,7 +11,6 @@ const RouterLayout = createRouterLayout(layout => {
 
 export default new Router({
   mode: 'history',
-  base: '/public/',
   routes: [
     {
       path: '/',
