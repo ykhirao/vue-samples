@@ -12,7 +12,6 @@ app.get("/foo", (req, res) => {
     <head>
       <title>Time</title>
       <link rel="stylesheet" href="/style.css">
-      <script src="/script.js"></script>
     </head>
     <body>
       <p>In London, the clock strikes:

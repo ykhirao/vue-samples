@@ -5,23 +5,11 @@
     "rewrites": [
       {
         "source": "/foo{,/**}",
-        "function": "app",
-        "headers": [
-          {
-            "key": "Cache-Control",
-            "value": "max-age=10"
-          }
-        ]
+        "function": "app"
       },
       {
         "source": "/s/**",
-        "function": "app",
-        "headers": [
-          {
-            "key": "Cache-Control",
-            "value": "public, max-age=3600, s-maxage=3600"
-          }
-        ]
+        "function": "app"
       },
       {
         "source": "**",
