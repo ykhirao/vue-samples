@@ -31,17 +31,21 @@
         width: 50%;
         margin-bottom: 10px;
       }
+      [v-cloak] {
+        display: none;
+      }
     </style>
   </head>
   <body>
     <div id="app">
-      <div>{{msg}}</div>
+      <div v-cloak>{{msg}}</div>
       <div>test</div>
       <div>test</div>
       <button @click="sayHello">Hi!</button>
       <input
         type="file"
         id="file"
+        multiple
         accept="image/*"
         onchange="handleFiles(this.files)"
       />
@@ -54,30 +58,27 @@
     <script>
       function handleFiles(files) {
         console.log("fire");
+        if (!files || files.length === 0) return;
         const file = files[0];
-        if (!file) {
-          return;
-        }
-
-        const payload = {
-          quality: 0.8,
-          maxWidth: 800,
-          maxHeight: 800,
-          mimeType: "image/jpeg",
-          success(result) {
-            console.log("success");
-            console.log(result);
-            const objectUrl = URL.createObjectURL(result);
-            document.querySelector(
-              "body"
-            ).innerHTML += `<img src="${objectUrl}">`;
-          },
-          error(err) {
-            console.log(err.message);
-          }
-        };
-        const img = new Compressor(file, payload);
-        console.log(img);
+        console.log(files);
+        [...files].forEach(file => {
+          const payload = {
+            quality: 0.8,
+            maxWidth: 800,
+            maxHeight: 800,
+            mimeType: "image/jpeg",
+            success(result) {
+              const objectUrl = URL.createObjectURL(result);
+              document.querySelector(
+                "body"
+              ).innerHTML += `<img src="${objectUrl}">`;
+            },
+            error(err) {
+              console.log(err.message);
+            }
+          };
+          new Compressor(file, payload);
+        });
       }
       document.getElementById("file").addEventListener("change", e => {
         console.log("change");
