@@ -10,6 +10,7 @@
     "dev": "firebase serve --only hosting,functions"
   },
   "dependencies": {
+    "compressorjs": "^1.0.6",
     "core-js": "^3.4.4",
     "dotenv": "^8.2.0",
     "prettier": "^1.19.1",

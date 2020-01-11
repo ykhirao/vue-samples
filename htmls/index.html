@@ -56,30 +56,6 @@
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
     <script>
-      function handleFiles(files) {
-        console.log("fire");
-        if (!files || files.length === 0) return;
-        const file = files[0];
-        console.log(files);
-        [...files].forEach(file => {
-          const payload = {
-            quality: 0.8,
-            maxWidth: 800,
-            maxHeight: 800,
-            mimeType: "image/jpeg",
-            success(result) {
-              const objectUrl = URL.createObjectURL(result);
-              document.querySelector(
-                "body"
-              ).innerHTML += `<img src="${objectUrl}">`;
-            },
-            error(err) {
-              console.log(err.message);
-            }
-          };
-          new Compressor(file, payload);
-        });
-      }
       document.getElementById("file").addEventListener("change", e => {
         console.log("change");
         const file = e.target.files[0];
