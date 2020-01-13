@@ -1,18 +1,10 @@
 <template>
   <div class="upload">
-    <div>Upload page</div>
-    <input
-      type="file"
-      id="file"
-      multiple
-      accept="image/*"
-      @change="handleFiles"
-    />
+    <h1>Upload page</h1>
+
     <div class="image-container">
       <img src="@/assets/sample.jpeg" />
       <img src="@/assets/sample2.jpeg" />
-      <img src="@/assets/sample2.jpeg" />
-      <img src="@/assets/sample.jpeg" />
       <img src="@/assets/sample.jpeg" />
       <img src="@/assets/sample.jpeg" />
       <img
@@ -21,6 +13,17 @@
         v-bind:key="image"
         alt=""
       />
+      <label for="file">
+        <div>Add your Images!<br />Click me!</div>
+        <input
+          type="file"
+          id="file"
+          multiple
+          accept="image/*"
+          style="display:none;"
+          @change="handleFiles"
+        />
+      </label>
     </div>
   </div>
 </template>
@@ -77,7 +80,8 @@ export default class Update extends Vue {
 </script>
 <style scoped lang="stylus">
 .upload
-  font-size: 3em
+  h1
+    font-size: 2em
   display: flex
   min-height: 100vh
   padding: 0
@@ -85,7 +89,6 @@ export default class Update extends Vue {
   align-items: center
   justify-content: center
   flex-direction: column
-
 
 .image-container
   width 100%
@@ -95,10 +98,23 @@ export default class Update extends Vue {
   align-items: center;
   flex-wrap wrap
   background-color #eee;
-  padding 30px 40px
+  padding 20px 30px
   border-radius 6px
 
-
   img
-    height 200px
+    height 180px
+    width 240px
+    object-fit cover
+    border-radius: 1%;
+    padding 5px
+  label
+    cursor pointer
+    height 180px
+    width 240px
+    background-color white
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em
 </style>
