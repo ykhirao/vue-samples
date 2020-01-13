@@ -3,7 +3,7 @@
     <h1>Upload page</h1>
 
     <div class="image-container">
-      <div class="images-text">
+      <div class="image-text">
         <label for="file">
           <div>Add your Images!<br />Click me!</div>
           <input
@@ -25,7 +25,7 @@
         v-bind:key="image"
         alt=""
       />
-      <div v-if="this.images.length" class="images-text">Save all files!</div>
+      <div v-if="this.images.length" class="image-text">Save all files!</div>
     </div>
   </div>
 </template>
@@ -105,7 +105,7 @@ export default class Update extends Vue {
     border-radius: 1%;
     margin 5px
 
-  .images-text
+  .image-text
     cursor pointer
     height 180px
     width 240px
