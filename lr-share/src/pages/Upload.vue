@@ -3,10 +3,8 @@
     <h1>Upload page</h1>
 
     <div class="image-container">
-      <img src="@/assets/sample.jpeg" />
-      <img src="@/assets/sample2.jpeg" />
-      <img src="@/assets/sample.jpeg" />
-      <img src="@/assets/sample.jpeg" />
+      <!-- <img src="@/assets/sample.jpeg" />
+      <img src="@/assets/sample2.jpeg" /> -->
       <img
         v-bind:src="image"
         v-for="image in images"
@@ -39,15 +37,9 @@ import Compressor from 'compressorjs'
 })
 export default class Update extends Vue {
   age = 21
-  images: string[] = []
+  images: string[] = [] // ["data:image/jpeg;base64,/XXXXXX"]
   get triple() {
     return this.age * 3
-  }
-  onClickButton() {
-    console.log('fire')
-  }
-  mounted() {
-    // コンポーネントがマウントされたときの処理
   }
   handleFiles(e: Event) {
     const images = this.images
@@ -92,6 +84,7 @@ export default class Update extends Vue {
 
 .image-container
   width 100%
+  max-width 960px
   display: flex;
   flex-direction: row;
   justify-content: center;
