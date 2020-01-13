@@ -8,7 +8,13 @@
       accept="image/*"
       @change="handleFiles"
     />
-    <div>
+    <div class="image-container">
+      <img src="@/assets/sample.jpeg" />
+      <img src="@/assets/sample2.jpeg" />
+      <img src="@/assets/sample2.jpeg" />
+      <img src="@/assets/sample.jpeg" />
+      <img src="@/assets/sample.jpeg" />
+      <img src="@/assets/sample.jpeg" />
       <img
         v-bind:src="image"
         v-for="image in images"
@@ -69,22 +75,30 @@ export default class Update extends Vue {
   }
 }
 </script>
-<style scoped>
-.upload {
-  font-size: 3em;
+<style scoped lang="stylus">
+.upload
+  font-size: 3em
+  display: flex
+  min-height: 100vh
+  padding: 0
+  margin: 0
+  align-items: center
+  justify-content: center
+  flex-direction: column
+
+
+.image-container
+  width 100%
   display: flex;
-  min-height: 100vh;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  align-items: center;
+  flex-direction: row;
   justify-content: center;
-  flex-direction: column;
-}
-/* #uploader {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 50%;
-  margin-bottom: 10px;
-} */
+  align-items: center;
+  flex-wrap wrap
+  background-color #eee;
+  padding 30px 40px
+  border-radius 6px
+
+
+  img
+    height 200px
 </style>
