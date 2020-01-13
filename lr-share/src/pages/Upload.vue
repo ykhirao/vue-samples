@@ -3,25 +3,29 @@
     <h1>Upload page</h1>
 
     <div class="image-container">
-      <!-- <img src="@/assets/sample.jpeg" />
-      <img src="@/assets/sample2.jpeg" /> -->
+      <div class="images-text">
+        <label for="file">
+          <div>Add your Images!<br />Click me!</div>
+          <input
+            type="file"
+            id="file"
+            multiple
+            accept="image/*"
+            style="display:none;"
+            @change="handleFiles"
+          />
+        </label>
+      </div>
+
+      <img src="@/assets/sample.jpeg" />
+      <!-- <img src="@/assets/sample2.jpeg" />   -->
       <img
         v-bind:src="image"
         v-for="image in images"
         v-bind:key="image"
         alt=""
       />
-      <label for="file">
-        <div>Add your Images!<br />Click me!</div>
-        <input
-          type="file"
-          id="file"
-          multiple
-          accept="image/*"
-          style="display:none;"
-          @change="handleFiles"
-        />
-      </label>
+      <div v-if="this.images.length" class="images-text">Save all files!</div>
     </div>
   </div>
 </template>
@@ -75,7 +79,7 @@ export default class Update extends Vue {
   h1
     font-size: 2em
   display: flex
-  min-height: 100vh
+  min-height: calc(100vh - 120px)
   padding: 0
   margin: 0
   align-items: center
@@ -99,8 +103,9 @@ export default class Update extends Vue {
     width 240px
     object-fit cover
     border-radius: 1%;
-    padding 5px
-  label
+    margin 5px
+
+  .images-text
     cursor pointer
     height 180px
     width 240px
@@ -110,4 +115,5 @@ export default class Update extends Vue {
     justify-content: center;
     align-items: center;
     font-size: 1.5em
+    margin 5px
 </style>
