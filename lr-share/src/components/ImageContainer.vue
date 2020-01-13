@@ -21,7 +21,9 @@
       class="image-text"
       @click="hundleUploadImages"
     >
-      Save all files!
+      <span>
+        Save all files!
+      </span>
     </div>
   </div>
 </template>
@@ -94,7 +96,6 @@ export default class ImageContainer extends Vue {
     margin 5px
 
   .image-text
-    cursor pointer
     height 180px
     width 240px
     background-color white
@@ -104,4 +105,9 @@ export default class ImageContainer extends Vue {
     align-items: center;
     font-size: 1.5em
     margin 5px
+
+    label
+      cursor pointer
+    span
+      cursor pointer
 </style>
