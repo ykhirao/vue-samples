@@ -1,14 +1,12 @@
 <template>
   <div class="signup">
-    <b-field label="Email" type="is-danger" message="This email is invalid">
-      <b-input type="email" value="john@" maxlength="30" v-model="username">
-      </b-input>
+    <b-field label="Email">
+      <b-input type="email" maxlength="30" v-model="username"></b-input>
     </b-field>
     <b-field label="Password">
-      <b-input type="password" password-reveal v-model="password"> </b-input>
+      <b-input type="password" password-reveal v-model="password"></b-input>
     </b-field>
-
-    <button>Register</button>
+    <b-button tag="input" native-type="submit" value="Submit signUp" @click="signUp" />
     <p>
       Do you have an account?
       <router-link to="/signin">sign in now!!</router-link>
@@ -16,46 +14,53 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'Signup',
-  data() {
-    return {
-      username: '',
-      password: ''
-    }
-  },
-  methods: {}
+<script lang="ts">
+import { Component, Prop, Vue } from 'vue-property-decorator'
+import Compressor from 'compressorjs'
+import * as firebase from 'firebase/app'
+import 'firebase/auth'
+console.log(firebase)
+
+@Component
+export default class Signup extends Vue {
+  uploadImages(payload: string[]) {
+    console.log(payload)
+  }
+  username: string = ''
+  password: string = ''
+  signUp() {
+    console.log('sign up')
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(this.username, this.password)
+      .then((userCredential: firebase.auth.UserCredential) => {
+        const user: firebase.User | null = userCredential.user
+
+        this.$buefy.toast.open({
+          message: 'ユーザーの作成に成功しました！',
+          position: 'is-bottom',
+          type: 'is-success'
+        })
+      })
+      .catch(e => {
+        this.$buefy.toast.open({
+          duration: 5000,
+          message: e.message,
+          position: 'is-bottom',
+          type: 'is-danger'
+        })
+      })
+  }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1,
-h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+<style scoped lang="stylus">
 .signup {
   margin-top: 20px;
-
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
-}
-input {
-  margin: 10px 0;
-  padding: 10px;
 }
 </style>

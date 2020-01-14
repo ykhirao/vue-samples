@@ -1,6 +1,13 @@
 <template>
   <div class="home">
-    <router-link to="upload">Upload page</router-link>
+    <ul>
+      <li>
+        <router-link to="upload">Upload page</router-link>
+      </li>
+      <li>
+        <router-link to="signup">Signup page</router-link>
+      </li>
+    </ul>
   </div>
 </template>
 
