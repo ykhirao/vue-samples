@@ -1,12 +1,13 @@
 <template>
   <div class="signup">
-    <h2>Sign up</h2>
-    <input type="text" placeholder="Username" v-model="username" />
-    <input type="password" placeholder="Password" v-model="password" />
-    <b-field label="Password">
-      <b-input type="password" value="iwantmytreasure" password-reveal>
+    <b-field label="Email" type="is-danger" message="This email is invalid">
+      <b-input type="email" value="john@" maxlength="30" v-model="username">
       </b-input>
     </b-field>
+    <b-field label="Password">
+      <b-input type="password" password-reveal v-model="password"> </b-input>
+    </b-field>
+
     <button>Register</button>
     <p>
       Do you have an account?
