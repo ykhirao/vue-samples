@@ -6,10 +6,10 @@
     <b-field label="Password">
       <b-input type="password" password-reveal v-model="password"></b-input>
     </b-field>
-    <b-button tag="input" native-type="submit" value="Submit!" @click="signUp" />
+    <b-button tag="input" native-type="submit" value="Submit!" @click="signIn" />
     <p>
-      Do you have an account?
-      <router-link to="/signin">sign in now!!</router-link>
+      You don't have an account?
+      <router-link to="/signup">sign up now!!</router-link>
     </p>
   </div>
 </template>
@@ -21,22 +21,22 @@ import * as firebase from 'firebase/app'
 import 'firebase/auth'
 
 @Component
-export default class Signup extends Vue {
+export default class Signin extends Vue {
   username: string = ''
   password: string = ''
-  signUp() {
+  signIn() {
     firebase
       .auth()
-      .createUserWithEmailAndPassword(this.username, this.password)
+      .signInWithEmailAndPassword(this.username, this.password)
       .then((userCredential: firebase.auth.UserCredential) => {
         const user: firebase.User | null = userCredential.user
 
         this.$buefy.toast.open({
-          message: 'ユーザーの作成に成功しました！',
+          message: 'ログインに成功しました！',
           position: 'is-bottom',
           type: 'is-success'
         })
-        // this.$router.push('/')
+        this.$router.push('/')
       })
       .catch(e => {
         this.$buefy.toast.open({
@@ -46,6 +46,7 @@ export default class Signup extends Vue {
           type: 'is-danger'
         })
       })
+      .finally(() => {})
   }
 }
 </script>

@@ -22,15 +22,17 @@ export default class Update extends Vue {
 }
 </script>
 <style scoped lang="stylus">
-.upload
-  display: flex
-  min-height: calc(100vh - 120px)
-  padding: 0
-  margin: 0
-  align-items: center
-  justify-content: center
-  flex-direction: column
+.upload {
+  display: flex;
+  min-height: calc(100vh - 120px);
+  padding: 0;
+  margin: 0;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 
-  h1
-    font-size: 2em
+  h1 {
+    font-size: 2em;
+  }
+}
 </style>
