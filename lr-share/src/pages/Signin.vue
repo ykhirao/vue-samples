@@ -11,6 +11,8 @@
     <p>
       You don't have an account?
       <router-link to="/signup">sign up now!!</router-link>
+      <router-link to="/">back to home!</router-link>
+      <a href @click="signOut">sign out!</a>
     </p>
   </div>
 </template>
@@ -26,6 +28,9 @@ export default class Signin extends Vue {
   email: string = ''
   password: string = ''
 
+  async signOut() {
+    firebase.auth().signOut()
+  }
   async signIn() {
     firebase
       .auth()

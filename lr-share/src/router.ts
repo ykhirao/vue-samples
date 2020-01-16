@@ -23,28 +23,23 @@ const router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
-  console.log(to.matched)
   let requiresAuth = to.matched.some(record => {
     return ['/'].includes(record.path)
   })
   let currentUser = firebase.auth().currentUser
-  console.log('tes', requiresAuth, currentUser)
-  next()
-  // // リダイレクト処理
-  // if (requiresAuth) {
-  //   firebase.auth().onAuthStateChanged(function(user) {
-  //     if (user) {
-  //       next()
-  //     } else {
-  //       next({
-  //         path: '/signin',
-  //         query: { redirect: to.fullPath }
-  //       })
-  //     }
-  //   })
-  // } else {
-  //   next()
-  // }
+  if (requiresAuth) {
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        next()
+      } else {
+        next({
+          path: '/signin'
+        })
+      }
+    })
+  } else {
+    next()
+  }
 })
 
 export default router
