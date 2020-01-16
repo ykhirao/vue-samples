@@ -8,12 +8,18 @@
       <b-input type="password" password-reveal v-model="password"></b-input>
     </b-field>
     <b-button tag="input" native-type="submit" value="Submit!" @click="signIn" />
-    <p>
-      You don't have an account?
-      <router-link to="/signup">sign up now!!</router-link>
-      <router-link to="/">back to home!</router-link>
-      <a href @click="signOut">sign out!</a>
-    </p>
+    <div>
+      <div>You don't have an account?</div>
+      <div>
+        <router-link to="/signup">sign up now!!</router-link>
+      </div>
+      <div>
+        <router-link to="/">back to home!</router-link>
+      </div>
+      <div>
+        <a href @click="signOut">sign out!</a>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -31,7 +37,7 @@ export default class Signin extends Vue {
   async signOut() {
     firebase.auth().signOut()
   }
-  async signIn() {
+  asyncsignIn() {
     firebase
       .auth()
       .setPersistence(firebase.auth.Auth.Persistence.SESSION)
