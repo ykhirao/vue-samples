@@ -1,7 +1,8 @@
 <template>
   <div class="signup">
+    <h1>会員登録</h1>
     <b-field label="Email">
-      <b-input type="email" maxlength="30" v-model="username"></b-input>
+      <b-input type="email" maxlength="30" v-model="email"></b-input>
     </b-field>
     <b-field label="Password">
       <b-input type="password" password-reveal v-model="password"></b-input>
@@ -22,12 +23,12 @@ import 'firebase/auth'
 
 @Component
 export default class Signup extends Vue {
-  username: string = ''
+  email: string = ''
   password: string = ''
   signUp() {
     firebase
       .auth()
-      .createUserWithEmailAndPassword(this.username, this.password)
+      .createUserWithEmailAndPassword(this.email, this.password)
       .then((userCredential: firebase.auth.UserCredential) => {
         const user: firebase.User | null = userCredential.user
 

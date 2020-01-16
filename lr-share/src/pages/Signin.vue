@@ -1,7 +1,8 @@
 <template>
   <div class="signup">
+    <h1>ログイン</h1>
     <b-field label="Email">
-      <b-input type="email" maxlength="30" v-model="username"></b-input>
+      <b-input type="email" maxlength="50" v-model="email"></b-input>
     </b-field>
     <b-field label="Password">
       <b-input type="password" password-reveal v-model="password"></b-input>
@@ -22,21 +23,27 @@ import 'firebase/auth'
 
 @Component
 export default class Signin extends Vue {
-  username: string = ''
+  email: string = ''
   password: string = ''
-  signIn() {
+
+  async signIn() {
     firebase
       .auth()
-      .signInWithEmailAndPassword(this.username, this.password)
-      .then((userCredential: firebase.auth.UserCredential) => {
-        const user: firebase.User | null = userCredential.user
+      .setPersistence(firebase.auth.Auth.Persistence.SESSION)
+      .then(() => {
+        firebase
+          .auth()
+          .signInWithEmailAndPassword(this.email, this.password)
+          .then((userCredential: firebase.auth.UserCredential) => {
+            const user: firebase.User | null = userCredential.user
 
-        this.$buefy.toast.open({
-          message: 'ログインに成功しました！',
-          position: 'is-bottom',
-          type: 'is-success'
-        })
-        this.$router.push('/')
+            this.$buefy.toast.open({
+              message: 'ログインに成功しました！',
+              position: 'is-bottom',
+              type: 'is-success'
+            })
+            this.$router.push('/')
+          })
       })
       .catch(e => {
         this.$buefy.toast.open({
@@ -46,7 +53,7 @@ export default class Signin extends Vue {
           type: 'is-danger'
         })
       })
-      .finally(() => {})
+      .finally(() => firebase.auth())
   }
 }
 </script>
