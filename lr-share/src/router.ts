@@ -27,7 +27,8 @@ router.beforeEach((to, from, next) => {
   let requiresAuth = to.matched.some(record => {
     return ['/'].includes(record.path)
   })
-  const currentUser = firebase.auth().currentUser
+  let currentUser
+  firebase.auth().onAuthStateChanged(user => (currentUser = user))
   console.log('tes', requiresAuth, currentUser)
   next()
   // // リダイレクト処理
