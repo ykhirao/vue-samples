@@ -20,7 +20,7 @@ export default {
 
     setInterval(() => {
       this.fillData()
-    }, 5000)
+    }, 1000)
   },
 
   methods: {

@@ -1,98 +1,20 @@
 <template>
   <div class="container">
     <div class="Chart">
-      <h1 style="text-align:center;">Barchart</h1>
-      <bar-example />
-    </div>
-
-    <div class="Chart">
-      <h1 style="text-align:center;">Horizontal Barchart</h1>
-      <horizontal-bar-example />
-    </div>
-
-    <div class="Chart">
       <h1 style="text-align:center;">
         Barchart with reactive mixing for live data
       </h1>
       <reactive-example />
     </div>
-
-    <div class="Chart">
-      <h1 style="text-align:center;">
-        Barchart with reactive mixing for live data as props
-      </h1>
-      <reactive-prop-example :chart-data="dataPoints" />
-    </div>
-
-    <div class="Chart">
-      <h1 style="text-align:center;">Linechart</h1>
-      <line-example />
-    </div>
-
-    <div class="Chart">
-      <h1 style="text-align:center;">Doughnutchart</h1>
-      <doughnut-example />
-    </div>
-
-    <div class="Chart">
-      <h1 style="text-align:center;">Piechart</h1>
-      <pie-example />
-    </div>
-
-    <div class="Chart">
-      <h1 style="text-align:center;">Radarchart</h1>
-      <radar-example />
-    </div>
-
-    <div class="Chart">
-      <h1 style="text-align:center;">Polararea</h1>
-      <polar-area-example />
-    </div>
-
-    <div class="Chart">
-      <h1 style="text-align:center;">Bubblechart</h1>
-      <bubble-example />
-    </div>
-
-    <div class="Chart">
-      <h1 style="text-align:center;">Scatter Chart</h1>
-      <scatter-example />
-    </div>
-    <div class="Chart">
-      <h1 style="text-align:center;">Custom Line Chart</h1>
-      <custom-line />
-    </div>
   </div>
 </template>
 
 <script>
-import BarExample from './BarExample'
-import LineExample from './LineExample'
-import DoughnutExample from './DoughnutExample'
-import PieExample from './PieExample'
-import RadarExample from './RadarExample'
-import PolarAreaExample from './PolarAreaExample'
-import BubbleExample from './BubbleExample'
 import ReactiveExample from './ReactiveExample'
-import ReactivePropExample from './ReactivePropExample'
-import ScatterExample from './ScatterExample'
-import HorizontalBarExample from './HorizontalBarExample'
-import CustomLine from './CustomExample'
 
 export default {
   components: {
-    BarExample,
-    LineExample,
-    DoughnutExample,
-    CustomLine,
-    PieExample,
-    RadarExample,
-    PolarAreaExample,
-    BubbleExample,
-    ReactiveExample,
-    ReactivePropExample,
-    ScatterExample,
-    HorizontalBarExample
+    ReactiveExample
   },
   data() {
     return {

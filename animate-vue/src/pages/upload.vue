@@ -1,25 +1,24 @@
 <template>
   <div class="upload">
     <h1>This is an upload page</h1>
-    <Chart class="chart chart1" />
     <Chart class="chart" />
     <a href="" id="downloadlink">download</a>
     <div @click="stop">stop</div>
     <div @click="start">start</div>
-    <All />
+    <sample class="chart1" />
   </div>
 </template>
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import Chart from '@/components/Chart.vue'
-import All from '@/components/examples/App.vue'
+import sample from '@/components/examples/sample.vue'
 
 declare var MediaRecorder: any
 interface CanvasElement extends HTMLCanvasElement {
   captureStream(): void
 }
 
-@Component({ components: { Chart, All } })
+@Component({ components: { Chart, sample } })
 export default class Upload extends Vue {
   name: string = 'upload'
   email: string = ''
@@ -31,6 +30,7 @@ export default class Upload extends Vue {
     //canvasの取得
     const canvas = <CanvasElement>document.querySelector('.chart1 #bar-chart')
     if (!canvas) return
+    canvas.style.backgroundColor = 'white'
     const stream = <any>canvas.captureStream()
     let recorder: any = new MediaRecorder(stream, {
       mimeType: 'video/webm;codecs=vp9'
@@ -71,4 +71,5 @@ export default class Upload extends Vue {
 
 .chart
   width 300px
+  background-color white
 </style>

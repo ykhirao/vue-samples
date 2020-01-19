@@ -5,6 +5,7 @@ export default {
   extends: Bar,
   mixins: [reactiveProp],
   data: () => ({
+    chartData: '',
     options: {
       responsive: true,
       maintainAspectRatio: false
