@@ -6,17 +6,20 @@
     <a href="" id="downloadlink">download</a>
     <div @click="stop">stop</div>
     <div @click="start">start</div>
+    <All />
   </div>
 </template>
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import Chart from '@/components/Chart.vue'
+import All from '@/components/examples/App.vue'
+
 declare var MediaRecorder: any
 interface CanvasElement extends HTMLCanvasElement {
   captureStream(): void
 }
 
-@Component({ components: { Chart } })
+@Component({ components: { Chart, All } })
 export default class Upload extends Vue {
   name: string = 'upload'
   email: string = ''
@@ -42,9 +45,9 @@ export default class Upload extends Vue {
       anchor.download = 'movie.webm'
       anchor.href = blobUrl
       anchor.style.display = 'block'
-      console.log(blobUrl)
     }
     this.recorder = recorder
+    this.recorder.start()
   }
   start(event: Event) {
     event.preventDefault()
