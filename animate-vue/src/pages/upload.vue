@@ -5,6 +5,7 @@
     <a href="" id="downloadlink">download</a>
     <div @click="stop">stop</div>
     <div @click="start">start</div>
+    <div @click="upload">upload</div>
     <sample class="chart1" />
   </div>
 </template>
@@ -12,6 +13,7 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import Chart from '@/components/Chart.vue'
 import sample from '@/components/examples/sample.vue'
+import axios from 'axios'
 
 declare var MediaRecorder: any
 interface CanvasElement extends HTMLCanvasElement {
@@ -23,8 +25,27 @@ export default class Upload extends Vue {
   name: string = 'upload'
   email: string = ''
   recorder: any = {}
+  blobUrl: string = ''
+  videoBlob: Blob = new Blob()
+
   mounted() {
     this.initRecorder()
+  }
+  upload() {
+    let url = 'https://www.googleapis.com/youtube/v3/videos&key=&part=snippet'
+    // url = 'http://localhost:8081/upload'
+    var params = new FormData()
+
+    params.append('file', this.videoBlob, 'video.webm')
+    axios
+      .post(url, params)
+      .then(function(response) {
+        // 成功時
+        console.log(response)
+      })
+      .catch(function(error) {
+        // エラー時
+      })
   }
   initRecorder() {
     //canvasの取得
@@ -36,7 +57,7 @@ export default class Upload extends Vue {
       mimeType: 'video/webm;codecs=vp9'
     })
 
-    recorder.ondataavailable = function(e: any) {
+    recorder.ondataavailable = (e: any) => {
       console.log('ondataavailable')
       var anchor = <HTMLAnchorElement>document.getElementById('downloadlink')
 
@@ -45,6 +66,7 @@ export default class Upload extends Vue {
       anchor.download = 'movie.webm'
       anchor.href = blobUrl
       anchor.style.display = 'block'
+      this.videoBlob = videoBlob
     }
     this.recorder = recorder
     this.recorder.start()
