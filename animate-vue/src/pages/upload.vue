@@ -28,6 +28,7 @@ export default class Signin extends Vue {
   }
 }
 </script>
-<style scoped>
+<style lang="scss" scoped>
+@import '../../node_modules/chartist/dist/scss/settings/_chartist-settings.scss';
 @import '../../node_modules/chartist/dist/chartist.min.css';
 </style>
