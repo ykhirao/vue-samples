@@ -1,20 +1,14 @@
 <template>
   <div class="about">
     <h1>This is an upload page</h1>
-    <chartist
-      ratio="ct-major-second"
-      type="Line"
-      :data="chartData"
-      :options="chartOptions"
-    >
-    </chartist>
   </div>
 </template>
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component
-export default class Signin extends Vue {
+export default class Upload extends Vue {
+  name: string = 'upload'
   email: string = ''
   chartData: object = {
     labels: ['A', 'B', 'C'],
@@ -28,7 +22,4 @@ export default class Signin extends Vue {
   }
 }
 </script>
-<style lang="scss" scoped>
-@import '../../node_modules/chartist/dist/scss/settings/_chartist-settings.scss';
-@import '../../node_modules/chartist/dist/chartist.min.css';
-</style>
+<style lang="scss" scoped></style>
