@@ -29,12 +29,10 @@ export default class Upload extends Vue {
     const canvas = <CanvasElement>document.querySelector('.chart1 #bar-chart')
     if (!canvas) return
     const stream = <any>canvas.captureStream()
-    //ストリームからMediaRecorderを生成
     let recorder: any = new MediaRecorder(stream, {
       mimeType: 'video/webm;codecs=vp9'
     })
-    //ダウンロード用のリンクを準備
-    //録画終了時に動画ファイルのダウンロードリンクを生成する処理
+
     recorder.ondataavailable = function(e: any) {
       console.log('ondataavailable')
       var anchor = <HTMLAnchorElement>document.getElementById('downloadlink')
@@ -46,7 +44,6 @@ export default class Upload extends Vue {
       anchor.style.display = 'block'
       console.log(blobUrl)
     }
-    //録画開始
     this.recorder = recorder
   }
   start(event: Event) {
