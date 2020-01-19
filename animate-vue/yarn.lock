@@ -1995,6 +1995,11 @@ chalk@^3.0.0:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
 
+chartist@^0.11.0:
+  version "0.11.4"
+  resolved "https://registry.yarnpkg.com/chartist/-/chartist-0.11.4.tgz#e96e1c573d8b67478920a3a6ae52359d9fc8d8b7"
+  integrity sha512-H4AimxaUD738/u9Mq8t27J4lh6STsLi4BQHt65nOtpLk3xyrBPaLiLMrHw7/WV9CmsjGA02WihjuL5qpSagLYw==
+
 check-types@^8.0.3:
   version "8.0.3"
   resolved "https://registry.yarnpkg.com/check-types/-/check-types-8.0.3.tgz#3356cca19c889544f2d7a95ed49ce508a0ecf552"
@@ -7540,6 +7545,13 @@ vue-auto-routing@^0.4.0:
   integrity sha512-xXmOnvgGZ7758F/OcNHSNoy6ku1rgISo2KQ/FMidBvQf/JKwvMfxad053YtIYavxHdc1am+nh8+slTnwnteMVw==
   dependencies:
     vue-route-generator "^0.4.3"
+
+vue-chartist@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/vue-chartist/-/vue-chartist-2.2.1.tgz#c110f06c252467c5682634265abab543fb9c730f"
+  integrity sha512-JM7zQ9Y1PaRKF5sf82+bVuyL4qjDi+1eidOYbUlOHkzyQ3YhSUZGONDeO5ae+SISE6INvuL5js5hLOKxQMh+Vg==
+  dependencies:
+    chartist "^0.11.0"
 
 vue-class-component@^7.0.2, vue-class-component@^7.1.0:
   version "7.2.2"
