@@ -1,5 +1,5 @@
 import { Bar } from '../BaseCharts'
-import { reactiveData } from '../mixins'
+import { reactiveData } from './mixin'
 
 export default {
   extends: Bar,
@@ -11,11 +11,11 @@ export default {
       maintainAspectRatio: false
     }
   }),
-  created () {
+  created() {
     this.fillData()
   },
 
-  mounted () {
+  mounted() {
     this.renderChart(this.chartData, this.options)
 
     setInterval(() => {
@@ -24,20 +24,46 @@ export default {
   },
 
   methods: {
-    fillData () {
+    fillData() {
       this.chartData = {
-        labels: ['January' + this.getRandomInt(), 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+        labels: [
+          'January' + this.getRandomInt(),
+          'February',
+          'March',
+          'April',
+          'May',
+          'June',
+          'July',
+          'August',
+          'September',
+          'October',
+          'November',
+          'December'
+        ],
         datasets: [
           {
             label: 'Data One',
             backgroundColor: '#f87979',
-            data: [this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt()]
+            data: [
+              this.getRandomInt(),
+              this.getRandomInt(),
+              this.getRandomInt(),
+              this.getRandomInt(),
+              this.getRandomInt(),
+              this.getRandomInt(),
+              this.getRandomInt(),
+              this.getRandomInt(),
+              this.getRandomInt(),
+              this.getRandomInt(),
+              this.getRandomInt(),
+              this.getRandomInt()
+            ]
           }
         ]
       }
     },
 
-    getRandomInt () {
+    getRandomInt() {
       return Math.floor(Math.random() * (50 - 5 + 1)) + 5
     }
   }
