@@ -14,6 +14,9 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 import Chart from '@/components/Chart.vue'
 import sample from '@/components/examples/sample.vue'
 import axios from 'axios'
+require('dotenv').config()
+
+console.log()
 
 declare var MediaRecorder: any
 interface CanvasElement extends HTMLCanvasElement {
@@ -32,7 +35,7 @@ export default class Upload extends Vue {
     this.initRecorder()
   }
   upload() {
-    let url = 'https://www.googleapis.com/youtube/v3/videos&key=&part=snippet'
+    let url = `https://www.googleapis.com/youtube/v3/videos&key=${process.env.VUE_APP_KEY}&part=snippet`
     // url = 'http://localhost:8081/upload'
     var params = new FormData()
 
