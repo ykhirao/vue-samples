@@ -109,7 +109,10 @@ class Game extends React.Component {
 
       return (
         <li key={index}>
-          <button onClick={() => this.jumpTo(index)}>
+          <button
+            onClick={() => this.jumpTo(index)}
+            style={index === this.state.stepNumber ? { color: 'red' } : {}}
+          >
             {text}
             {hand}
           </button>
