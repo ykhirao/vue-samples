@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import 'typeface-roboto'
 import { Container } from '@material-ui/core'
 import NavBar from './NavBar'
