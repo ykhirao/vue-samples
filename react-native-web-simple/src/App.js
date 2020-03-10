@@ -1,25 +1,12 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import { Image, StyleSheet, Text, View } from 'react-native';
-
-const Link = (props) => <Text {...props} accessibilityRole="link" style={StyleSheet.compose(styles.link, props.style)} />
+import {  StyleSheet, View } from 'react-native';
+import FlatList from './flatlist-simple';
 
 class App extends Component {
   render() {
     return (
       <View style={styles.app}>
-        <View style={styles.header}>
-          <Image accessibilityLabel="React logo" source={logo} resizeMode="contain" style={styles.logo} />
-          <Text style={styles.title}>React Native for Web</Text>
-        </View>
-        <Text style={styles.text}>
-          This is an example of an app built
-          with <Link href="https://github.com/facebook/create-react-app">Create React App</Link> and{' '}
-          <Link href="https://github.com/necolas/react-native-web">React Native for Web</Link>
-        </Text>
-        <Text style={styles.text}>
-          To get started, remix this starter kit by editing <Link href="https://glitch.com/edit/#!/react-native?path=src/App.js" style={styles.code}>src/App.js</Link>.
-        </Text>
+        <FlatList />
       </View>
     );
   }
