@@ -1,13 +1,11 @@
 import React from 'react'
 import 'typeface-roboto'
 import { Container } from '@material-ui/core'
-import NavBar from './NavBar'
-import Expo from './Expo'
+import Notification from './Notification'
 
 function App(props) {
   return (
     <Container maxWidth="sm" style={{ padding: 0 }}>
-      <NavBar />
       <Container
         maxWidth="sm"
         style={{
@@ -17,7 +15,7 @@ function App(props) {
           alignItems: 'center'
         }}
       >
-        <Expo />
+        <Notification />
       </Container>
     </Container>
   )
