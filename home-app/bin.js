@@ -1,10 +1,10 @@
 #! /usr/bin/env node
 
 var readlineSync = require('readline-sync'),
-  MAX = 60,
+  MAX = 100,
   MIN = 0,
-  man = 60,
-  home = 0,
+  man = 80,
+  home = 20,
   key,
   cnt = 0
 
