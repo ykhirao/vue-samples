@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "bin": {
-    "gohome": "bin.js"
+    "index": "bin.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,6 +13,6 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "cli-progress": "^3.6.0"
+    "readline-sync": "^1.4.10"
   }
 }
